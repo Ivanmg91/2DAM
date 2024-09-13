@@ -1,0 +1,14 @@
+fichero=open("listado-codigos-postales.csv")
+for a in fichero:
+    linea=fichero.readline().strip()
+    linea_separada=linea.split(delimitador)
+
+    for i in range(len(campos)):
+        #Bucle q recorra el array de campos_para_imprimir, si coincide el campo de el primer bucle con alguno de campos_para_imprimir se concatena a un string
+        for j in range(len(campos_para_imprimir)):
+            if campos[i]==campos_para_imprimir[j]:
+                string_concatenar+=linea_separada[i] + delimitador
+
+    print(string_concatenar)
+
+fichero.close()
