@@ -28,3 +28,5 @@ for a in fichero:
     print(string_concatenar)
 
 fichero.close()
+
+#ACABAR
