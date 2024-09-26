@@ -44,16 +44,17 @@ if not os.path.exists(rutaDelCsv):
                     todosloscontactos.append(row)
 
             contactoAModificar = input("Introduce el nombre del contacto a modificar: ")
+            contactoApellidoAEliminar = input("Introduce los apellidos del contacto a modificar: ")
             contactos = []
 
             # Bucle que recorre todos los contactos y si existe el contacto a modificar, hace algo
             for contacto in todosloscontactos:
-                if contacto[0] == contactoAModificar:
+                if contacto[0] == contactoAModificar and contacto[1] == contactoApellidoAEliminar:
                     # guardar todos los contactos menos el que se quiere modificar
                     with open('agenda.csv', mode='r', newline='') as file:
                         reader = csv.reader(file, delimiter=';')
                         for row in reader:
-                            if row[0] != contactoAModificar:
+                            if row[0] != contactoAModificar or row[1] != contactoApellidoAEliminar:
                                 contactos.append(row)
 
                     # borrar todo el contenido del csv y escribir los contactos menos el que se quiere modificar, para luego añadir el contacto modificado
@@ -80,6 +81,8 @@ if not os.path.exists(rutaDelCsv):
 
         elif opcionMenuAgenda == 3:
 
+            contactoAEliminar = input("Introduce el nombre del contacto a eliminar: ")
+            contactoApellidoAEliminar = input("Introduce los apellidos del contacto a eliminar: ")
             # Guardar todos los contactos en una lista
             todosloscontactos = []
             with open('agenda.csv', mode='r', newline='') as file:
@@ -87,23 +90,17 @@ if not os.path.exists(rutaDelCsv):
                 for row in reader:
                     todosloscontactos.append(row)
 
-            contactoAEliminar = input("Introduce el nombre del contacto que quieres eliminar: ")
-            contactos = []
-
-            # Bucle que recorre todos los contactos y si existe el contacto a eliminar, hace algo
+            # Filtrar el contacto a eliminar
             for contacto in todosloscontactos:
-                if contacto[0] == contactoAEliminar:
-                    # guardar todos los contactos menos el que se quiere modificar
-                    with open('agenda.csv', mode='r', newline='') as file:
-                        reader = csv.reader(file, delimiter=';')
-                        for row in reader:
-                            if row[0] != contactoAEliminar:
-                                contactos.append(row)
+                if contacto[0] == contactoAEliminar and contacto[1] == contactoApellidoAEliminar:
+                    todosloscontactos.remove(contacto)
 
-                    # borrar todo el contenido del csv y escribir los contactos menos el que se quiere modificar, para luego añadir el contacto modificado
-                    with open('agenda.csv', mode='w', newline='') as file:
-                        writer = csv.writer(file, delimiter=';')
-                        writer.writerows(contactos)
+            contactos = todosloscontactos
+
+            # Borrar todo el contenido del csv y escribir los contactos actualizados
+            with open('agenda.csv', mode='w', newline='') as file:
+                writer = csv.writer(file, delimiter=';')
+                writer.writerows(contactos)
 
         elif opcionMenuAgenda == 4:
 
@@ -137,7 +134,7 @@ if not os.path.exists(rutaDelCsv):
                     todosloscontactos.append(row)
 
             # Ordenar la lista de contactos
-            todosloscontactos.sort()
+            todosloscontactos.sort(key=lambda contacto: contacto[0].lower())
 
             # Imprimir la lista de contactos ordenada
             for contacto in todosloscontactos:
@@ -179,16 +176,17 @@ else:
                     todosloscontactos.append(row)
 
             contactoAModificar = input("Introduce el nombre del contacto a modificar: ")
+            contactoApellidoAEliminar = input("Introduce los apellidos del contacto a modificar: ")
             contactos = []
 
             # Bucle que recorre todos los contactos y si existe el contacto a modificar, hace algo
             for contacto in todosloscontactos:
-                if contacto[0] == contactoAModificar:
+                if contacto[0] == contactoAModificar and contacto[1] == contactoApellidoAEliminar:
                     # guardar todos los contactos menos el que se quiere modificar
                     with open('agenda.csv', mode='r', newline='') as file:
                         reader = csv.reader(file, delimiter=';')
                         for row in reader:
-                            if row[0] != contactoAModificar:
+                            if row[0] != contactoAModificar or row[1] != contactoApellidoAEliminar:
                                 contactos.append(row)
 
                     # borrar todo el contenido del csv y escribir los contactos menos el que se quiere modificar, para luego añadir el contacto modificado
@@ -215,6 +213,8 @@ else:
 
         elif opcionMenuAgenda == 3:
 
+            contactoAEliminar = input("Introduce el nombre del contacto a eliminar: ")
+            contactoApellidoAEliminar = input("Introduce los apellidos del contacto a eliminar: ")
             # Guardar todos los contactos en una lista
             todosloscontactos = []
             with open('agenda.csv', mode='r', newline='') as file:
@@ -222,23 +222,18 @@ else:
                 for row in reader:
                     todosloscontactos.append(row)
 
-            contactoAEliminar = input("Introduce el nombre del contacto que quieres eliminar: ")
-            contactos = []
-
-            # Bucle que recorre todos los contactos y si existe el contacto a eliminar, hace algo
+            # Filtrar el contacto a eliminar
             for contacto in todosloscontactos:
-                if contacto[0] == contactoAEliminar:
-                    # guardar todos los contactos menos el que se quiere modificar
-                    with open('agenda.csv', mode='r', newline='') as file:
-                        reader = csv.reader(file, delimiter=';')
-                        for row in reader:
-                            if row[0] != contactoAEliminar:
-                                contactos.append(row)
+                if contacto[0] == contactoAEliminar and contacto[1] == contactoApellidoAEliminar:
+                    todosloscontactos.remove(contacto)
 
-                    # borrar todo el contenido del csv y escribir los contactos menos el que se quiere modificar, para luego añadir el contacto modificado
-                    with open('agenda.csv', mode='w', newline='') as file:
-                        writer = csv.writer(file, delimiter=';')
-                        writer.writerows(contactos)
+            contactos = todosloscontactos
+
+
+            # Borrar todo el contenido del csv y escribir los contactos actualizados
+            with open('agenda.csv', mode='w', newline='') as file:
+                writer = csv.writer(file, delimiter=';')
+                writer.writerows(contactos)
 
         elif opcionMenuAgenda == 4:
 
@@ -272,7 +267,7 @@ else:
                     todosloscontactos.append(row)
 
             # Ordenar la lista de contactos
-            todosloscontactos.sort()
+            todosloscontactos.sort(key=lambda contacto: contacto[0].lower())
 
             # Imprimir la lista de contactos ordenada
             for contacto in todosloscontactos:

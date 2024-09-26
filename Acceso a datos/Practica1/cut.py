@@ -1,32 +1,31 @@
-#Escribir un programa, llamado cut.py, que dado un archivo de texto, un
-#delimitador, y una lista de campos, imprima solamente esos campos, separados por ese
-#delimitador.
+delimitador = ";"
+campos = ["provincia", "poblacion", "codigopostalid", "lat", "lon"]
+campos_para_imprimir = []
 
-delimitador=";"
-campos=["provincia", "poblacion" , "codigopostalid", "lat", "lon"]
-campos_para_imprimir=[]
-string_concatenar=""
+# Bucle que recorre la lista preguntando si quiere imprimir el campo | SI NO HAY RESPUESTA ES COMO QUE NO
+for campo in campos:
+    siono = input(f"Quieres imprimir el campo {campo}? (S/N) ")
+    # Si dice S lo añado a la lista de campos para imprimir
+    if siono.upper() == "S":
+        campos_para_imprimir.append(campo)
 
-#Bucle q recorra la lista preguntando si quiere imprimir el campo | SI NO HAY RESPUESTA ES COMO Q NO
-for i in range(len(campos)):
-    siono=input("Quieres imprimir el campo " + campos[i] + "? (S/N)")
-    #Si dice S lo añado a la lista de campos para imprimir
-    if siono=="S":
-        campos_para_imprimir.append(campos[i])
+# Abrir el archivo para lectura
+with open("listado-codigos-postales.csv", "r") as fichero:
+    # Leer la primera línea que contiene los nombres de los campos
+    encabezados = fichero.readline().strip().split(delimitador)
 
-fichero=open("listado-codigos-postales.csv")
-for a in fichero:
-    linea=fichero.readline().strip()
-    linea_separada=linea.split(delimitador)
+    # Crear un diccionario para mapear los nombres de los campos a sus índices
+    indices_campos = {campo: index for index, campo in enumerate(encabezados)}
 
-    for i in range(len(campos)):
-        #Bucle q recorra el array de campos_para_imprimir, si coincide el campo de el primer bucle con alguno de campos_para_imprimir se concatena a un string
-        for j in range(len(campos_para_imprimir)):
-            if campos[i]==campos_para_imprimir[j]:
-                string_concatenar+=linea_separada[i] + delimitador
+    # Leer el resto del archivo línea por línea
+    for linea in fichero:
+        linea_separada = linea.strip().split(delimitador)
+        string_concatenar = []
 
-    print(string_concatenar)
+        # Añadir los campos seleccionados a la lista de concatenación
+        for campo in campos_para_imprimir:
+            if campo in indices_campos:
+                string_concatenar.append(linea_separada[indices_campos[campo]])
 
-fichero.close()
-
-#ACABAR
+        # Imprimir la línea concatenada con el delimitador
+        print(delimitador.join(string_concatenar))

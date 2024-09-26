@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<agenda>
+    <contactos>
+        <contacto>
+            <Nombre>Jorge</Nombre>
+            <Apellidos>Perez</Apellidos>
+            <Email>jorge.perez@example.com</Email>
+            <Telefono1>123456789</Telefono1>
+            <Telefono2>987654321</Telefono2>
+            <Direccion>Calle Falsa 123</Direccion>
+        </contacto>
+        <contacto>
+            <nombre>Alberto</nombre>
+            <apellidos>Cornejo</apellidos>
+            <email>email</email>
+            <telefono1>tel2</telefono1>
+            <telefono2>tel1</telefono2>
+            <direccion>dir</direccion>
+        </contacto>
+    </contactos>
+</agenda>
