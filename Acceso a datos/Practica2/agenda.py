@@ -8,7 +8,7 @@ opcionMenuAgenda = 0
 if not os.path.exists(rutaDelCsv):
 
     print("No hay ninguna agenda, se creará una nueva")
-    primeraFila = "Nombre;Apellidos;Email;Telefono1;Telefono2;Direccion"
+    primeraFila = "nombre;apellidos;email;telefono1;telefono2;direccion"
 
     with open('agenda.csv', mode='w', newline='') as file:
         writer = csv.writer(file, delimiter=';')

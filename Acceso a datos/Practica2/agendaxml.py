@@ -1,4 +1,4 @@
-#Si el csv no existe, lo crea
+# Si el csv no existe, lo crea
 import csv
 import os.path
 import csv
@@ -19,8 +19,9 @@ else:
     tree = ET.parse(rutaDelXml)
     raiz = tree.getroot()
 
-    #Entrar en el bucle del menu de la agenda
-    print("Bienvenido a la agenda\n1.Añadir contacto\n2.Modificar contacto\n3.Eliminar contacto\n4.Buscar contacto\n5.Mostrar lista de contactos ordenada\n6.Salir")
+    # Entrar en el bucle del menu de la agenda
+    print(
+        "Bienvenido a la agenda\n1.Añadir contacto\n2.Modificar contacto\n3.Eliminar contacto\n4.Buscar contacto\n5.Mostrar lista de contactos ordenada\n6.Salir")
     opcionMenuAgenda = int(input("Introduce una opción: "))
 
     while opcionMenuAgenda != 6:
@@ -32,7 +33,6 @@ else:
             telefono1 = input("Introduce el primer telefono: ")
             telefono2 = input("Introduce el segundo telefono: ")
             direccion = input("Introduce la dirección: ")
-
 
             contactos = raiz.find("contactos")
             if contactos is None:
@@ -57,7 +57,7 @@ else:
 
             # Buscar el contacto y modificarlo
             contacto_encontrado = False
-            for contacto in raiz.findall(".//contacto"): # .//contacto busca en todos los niveles del arbol
+            for contacto in raiz.findall(".//contacto"):  # .//contacto busca en todos los niveles del arbol
                 nombre_element = contacto.find('nombre')
                 apellidos_element = contacto.find('apellidos')
 
@@ -91,66 +91,69 @@ else:
 
             contactoAEliminar = input("Introduce el nombre del contacto a eliminar: ")
             contactoApellidoAEliminar = input("Introduce los apellidos del contacto a eliminar: ")
-            # Guardar todos los contactos en una lista
-            todosloscontactos = []
-            with open('agenda.csv', mode='r', newline='') as file:
-                reader = csv.reader(file, delimiter=';')
-                for row in reader:
-                    todosloscontactos.append(row)
 
-            # Filtrar el contacto a eliminar
-            for contacto in todosloscontactos:
-                if contacto[0] == contactoAEliminar and contacto[1] == contactoApellidoAEliminar:
-                    todosloscontactos.remove(contacto)
+            contactoEncontrado = False
+            contactos = raiz.find("contactos")
+            if contactos is not None:
+                for contacto in contactos.findall("contacto"):
+                    nombre_element = contacto.find('nombre')
+                    apellidos_element = contacto.find('apellidos')
 
-            contactos = todosloscontactos
+                    if nombre_element is not None and apellidos_element is not None:
+                        if nombre_element.text == contactoAEliminar and apellidos_element.text == contactoApellidoAEliminar:
+                            contactoEncontrado = True
+                            print("Contacto encontrado, eliminando...")
+                            contactos.remove(contacto)
 
-            # Borrar todo el contenido del csv y escribir los contactos actualizados
-            with open('agenda.csv', mode='w', newline='') as file:
-                writer = csv.writer(file, delimiter=';')
-                writer.writerows(contactos)
+                            tree.write(rutaDelXml, encoding='utf-8', xml_declaration=True)
+                            print("Contacto eliminado")
+                            break
+
+            if not contactoEncontrado:
+                print("Contacto no encontrado")
+
 
         elif opcionMenuAgenda == 4:
 
             contactoABuscar = input("Introduce el nombre del contacto que quieres buscar: ")
+            apellidoABuscar = input("Introduce los apellidos del contacto que quieres buscar: ")
             contactoImprimir = ""
 
-            # Guardar todos los contactos en una lista
-            todosloscontactos = []
-            with open('agenda.csv', mode='r', newline='') as file:
-                reader = csv.reader(file, delimiter=';')
-                for row in reader:
-                    todosloscontactos.append(row)
+            for contacto in raiz.findall(".//contacto"):
+                nombre_element = contacto.find('nombre')
+                apellidos_element = contacto.find('apellidos')
+                if nombre_element is not None and apellidos_element is not None:
+                    if nombre_element.text == contactoABuscar and apellidos_element.text == apellidoABuscar:
+                        contactoImprimir = contacto
+                        break
 
-            for contacto in todosloscontactos:
-                if contacto[0] == contactoABuscar:
-                    contactoImprimir = contacto
-                    print(contactoImprimir)
-
-            if not contactoImprimir:
-                print("El contacto no existe")
+            if contactoImprimir != "":
+                print("Contacto encontrado:")
+                print("Nombre: " + contactoImprimir.find('nombre').text + " " + contactoImprimir.find('apellidos').text + "; " + "Email: " + contactoImprimir.find('email').text + "; " + "Telefono1: " + contactoImprimir.find('telefono1').text + "; " + "Telefono2: " + contactoImprimir.find('telefono2').text + "; " + "Direccion: " + contactoImprimir.find('direccion').text)
+            else:
+                print("Contacto no encontrado")
 
 
         elif opcionMenuAgenda == 5:
 
-            # Guardar todos los contactos en una lista excepto la primera fila
-            todosloscontactos = []
-            with open('agenda.csv', mode='r', newline='') as file:
-                reader = csv.reader(file, delimiter=';')
-                next(reader)
-                for row in reader:
-                    todosloscontactos.append(row)
+            contactos = raiz.findall(".//contacto")
+            contactos_ordenados = sorted(contactos, key=lambda contacto: contacto.find('nombre').text.lower())
 
-            # Ordenar la lista de contactos
-            todosloscontactos.sort(key=lambda contacto: contacto[0].lower())
+            if contactos_ordenados:
+                for contacto in contactos_ordenados:
+                    nombre = contacto.find('nombre').text
+                    apellidos = contacto.find('apellidos').text
+                    email = contacto.find('email').text
+                    telefono1 = contacto.find('telefono1').text
+                    telefono2 = contacto.find('telefono2').text
+                    direccion = contacto.find('direccion').text
+                    print("Nombre: " + nombre + " " + apellidos + "; " + "Email: " + email + "; " + "Telefono1: " + telefono1 + "; " + "Telefono2: " + telefono2 + "; " + "Direccion: " + direccion)
 
-            # Imprimir la lista de contactos ordenada
-            for contacto in todosloscontactos:
-                print(contacto)
+            else:
+                print("No hay contactos")
 
         else:
             print("Opción no válida")
 
-        opcionMenuAgenda = int(input("Introduce una opción:\n1.Añadir contacto\n2.Modificar contacto\n3.Eliminar contacto\n4.Buscar contacto\n5.Mostrar lista de contactos ordenada\n6.Salir"))
-
-
+        opcionMenuAgenda = int(input(
+            "Introduce una opción:\n1.Añadir contacto\n2.Modificar contacto\n3.Eliminar contacto\n4.Buscar contacto\n5.Mostrar lista de contactos ordenada\n6.Salir"))
