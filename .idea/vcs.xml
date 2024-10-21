@@ -2,6 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Acceso a datos/UD 2 - Acceso a bbdd relacionales/acceso_bd" vcs="Git" />
   </component>
 </project>
