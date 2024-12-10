@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<agenda>
+    <contactos>
+        <contacto>
+            <nombre>Ivan</nombre>
+            <apellidos>Montiano</apellidos>
+            <email>email</email>
+            <telefono1>tel</telefono1>
+            <telefono2>tel</telefono2>
+            <direccion>dir</direccion>
+        </contacto>
+        <contacto>
+            <nombre>Jorge</nombre>
+            <apellidos>Perez</apellidos>
+            <email>emaial</email>
+            <telefono1>tel</telefono1>
+            <telefono2>tel</telefono2>
+            <direccion>dir</direccion>
+        </contacto>
+    <contacto><nombre>Alberto</nombre><apellidos>Cornejo</apellidos><email>email</email><telefono1>tel</telefono1><telefono2>tel</telefono2><direccion>dir</direccion></contacto></contactos>
+</agenda>
