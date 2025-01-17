@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">RacingCarsApp</string>
+    <string name="escuderia_ferrari">Scuderia Ferrari</string>
+    <string name="carlos_sainz">Carlos Sainz</string>
+    <string name="description_ferrari">The Ferrari SF-24, which internal name is Project 676, is a Formula One racing car designed and constructed by Scuderia Ferrari which competed in the 2024 Formula One World Championship. It was driven by Carlos Sainz Jr. and Charles Leclerc.</string>
+    <string name="motor_ferrari">Ferrari 066/12</string>
+    <string name="escuderia_red_bull">Oracle Red Bull Racing</string>
+    <string name="max_verstappen">Max Verstappen</string>
+    <string name="description_red_bull">The Red Bull Racing RB20 is a championship-winning F1 car designed and constructed by Red Bull Racing and powered by the Honda RBPTH002 power unit to compete in the 2024 Formula One World Championship. The car, which is the successor to the highly successful Red Bull RB19, was unveiled at the team factory in Milton Keynes on 15 February 2024. The RB20 was driven by defending World Champion Max Verstappen and teammate Sergio Pérez.</string>
+    <string name="motor_red_bull">Honda RBPTH002</string>
+    <string name="escuderia_mercedes">Mercedes-AMG Petronas F1 Team</string>
+    <string name="lewis_hamilton">Lewis Hamilton</string>
+    <string name="description_mercedes">Mercedes W15 is a Formula One racing car designed and built by the Mercedes-AMG Petronas F1 Team to compete in the 2024 Formula One World Championship.\nThis was the first Mercedes car fully designed under British designer and engineer James Allison since his return as technical director in 2023. The W15 was raced by returning drivers George Russell, and seven-time World Drivers Champion Lewis Hamilton.</string>
+    <string name="motor_mercedes">Mercedes-AMG F1 W15</string>
+    <string name="escuderia_mclaren">McLaren Formula 1 Team</string>
+    <string name="lando_norris">Lando Norris</string>
+    <string name="description_mclaren">The McLaren MCL38 is a world championship-winning Formula One car designed and constructed by McLaren under the direction of Rob Marshall to compete in the 2024 Formula One World Championship, in which it won the World Constructors Championship. The car was driven by Lando Norris and Oscar Piastri.</string>
+    <string name="motor_mclaren">Mercedes-AMG F1 M15</string>
+    <string name="escuderia_alpine">BWT Alpine F1 Team</string>
+    <string name="esteban_ocon">Esteban Ocon</string>
+    <string name="description_alpine">El Alpine A524 fue un monoplaza de Fórmula 1, construido por la escudería francesa Alpine F1 Team para competir en el Campeonato Mundial de Fórmula 1 de 2024. Fue conducido inicialmente por Pierre Gasly y Esteban Ocon.</string>
+    <string name="motor_alpine">Renault E-Tech RE24</string>
+    <string name="escuderia_aston_martin">Aston Martin Aramco F1 Team</string>
+    <string name="fernando_alonso">Fernando Alonso</string>
+    <string name="description_aston_martin">El Aston Martin AMR24 fue un monoplaza de Fórmula 1 construido por Aston Martin para competir en el Campeonato Mundial de Fórmula 1 de 2024. El monoplaza fue conducido por Fernando Alonso y Lance Stroll.</string>
+    <string name="motor_aston_martin">"Mercedes-AMG F1 M15 "</string>
+    <string name="escuderia_williams">Williams Racing</string>
+    <string name="logan_sargeant">Logan Sargeant</string>
+    <string name="description_williams">El Williams FW46 fué el monoplaza de Fórmula 1 diseñado y construido por Williams Racing para disputar la temporada 2024. Conducido por Logan Sargeant, hasta octubre, y Alexander Albon. Franco Colapinto se unió al equipo como sustituto de Sargeant a partir del Gran Premio de Italia.</string>
+    <string name="motor_williams">"Mercedes-AMG F1 M15 "</string>
+    <string name="motor">Engine:</string>
+    <string name="description">Description:</string>
+    <string name="expand_button_content_description">See more information about the team and the engine</string>
+    <string name="year">Year %d</string>
+    <string name="driver">Driver:</string>
+
+</resources>
