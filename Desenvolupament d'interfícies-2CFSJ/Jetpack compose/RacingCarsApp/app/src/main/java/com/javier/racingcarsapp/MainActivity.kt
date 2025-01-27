@@ -82,7 +82,6 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RacingCarsApp() {
-    RacingCarsAppTheme {
         Scaffold(
             topBar = {
                 RacingCarsTopAppBar()
@@ -102,7 +101,6 @@ fun RacingCarsApp() {
                 }
             }
         }
-    }
 }
 
 
