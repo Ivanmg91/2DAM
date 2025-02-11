@@ -4,17 +4,53 @@ public class SpawnManager : MonoBehaviour
 {
 
     public GameObject[] animalPrefabs;
-    public int animalIndex;
+    
+    private float spawnRangeX = 20;
+    private float spawnPosZ = 20;
+
+    private float startDelay = 2;
+    private float spawnInterval = 3.5f;
+    
+    public float sideSpawnMinZ;
+    public float sideSpawnMaxZ;
+    public float sideSpawnX;
+    
     void Start()
     {
-        
+        InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
+        InvokeRepeating("SpawnLeftAnimal", startDelay, spawnInterval);
+        InvokeRepeating("SpawnRightAnimal", startDelay, spawnInterval);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            Instantiate(animalPrefabs[animalIndex], new Vector3(0, 0, 20), animalPrefabs[animalIndex].transform.rotation);
-        }
+        
+    }
+
+    void SpawnRandomAnimal()
+    {
+        int animalIndex = Random.Range(0, animalPrefabs.Length);
+            
+        // Genera random el animal y su posicion
+        Vector3 spawnPos = new Vector3(Random.Range(-spawnRangeX, spawnRangeX), 0, spawnPosZ);
+        Instantiate(animalPrefabs[animalIndex],spawnPos, animalPrefabs[animalIndex].transform.rotation);
+    }
+
+    void SpawnLeftAnimal()
+    {
+        int animalIndex = Random.Range(0, animalPrefabs.Length);
+        
+        Vector3 spawnPos = new Vector3(-sideSpawnX, 0, Random.Range(sideSpawnMinZ, sideSpawnMaxZ));
+        Vector3 rotation = new Vector3(0, 90, 0);
+        Instantiate(animalPrefabs[animalIndex], spawnPos, Quaternion.Euler(rotation));
+    }
+    
+    void SpawnRightAnimal()
+    {
+        int animalIndex = Random.Range(0, animalPrefabs.Length);
+
+        Vector3 rotation = new Vector3(0, -90, 0);
+        Vector3 spawnPos = new Vector3(sideSpawnX, 0, Random.Range(sideSpawnMinZ, sideSpawnMaxZ));
+        Instantiate(animalPrefabs[animalIndex], spawnPos, Quaternion.Euler(rotation));
     }
 }

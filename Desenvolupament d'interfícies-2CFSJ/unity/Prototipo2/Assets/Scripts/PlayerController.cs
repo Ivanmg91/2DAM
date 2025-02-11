@@ -3,9 +3,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float horizontalInput;
+    public float verticalInput;
     public float speed = 10.0f;
     public float xRange = 20;
+    public float zRangeBottom = 4;
+    public float zRangeTop = 18;
     public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +23,12 @@ public class PlayerController : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         transform.Translate(Vector3.right * horizontalInput * Time.deltaTime * speed);
 
-        // Para q el player no se salga de la pantalla
+        verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(Vector3.forward * verticalInput * Time.deltaTime * speed);
+        
+        
+
+        // Para q el player no se salga de la pantalla en el eje x
         if (transform.position.x < -xRange)
         {
             transform.position = new Vector3(-xRange, transform.position.y, transform.position.z);
@@ -29,10 +38,21 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(xRange, transform.position.y, transform.position.z);
         }
         
+        // Para q el player no se salga de la pantalla en el eje z
+        if (transform.position.z < -zRangeBottom)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, -zRangeBottom);
+        }
+        if (transform.position.z > zRangeTop)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, zRangeTop);
+        }
+        
+        
         // Lanzar proyectil
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+            Instantiate(projectilePrefab, projectileSpawnPoint.position, projectilePrefab.transform.rotation);
         }
     }
 }
