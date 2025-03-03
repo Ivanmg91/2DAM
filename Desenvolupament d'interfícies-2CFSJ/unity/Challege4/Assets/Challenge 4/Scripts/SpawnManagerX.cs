@@ -13,9 +13,9 @@ public class SpawnManagerX : MonoBehaviour
 
     public int enemyCount;
     public int waveCount = 1;
-
-
+    
     public GameObject player; 
+    public float enemySpeed = 50;
 
     // Update is called once per frame
     void Update()
@@ -55,6 +55,7 @@ public class SpawnManagerX : MonoBehaviour
         }
 
         waveCount++;
+        enemyCount += 25;
         ResetPlayerPosition(); // put player back at start
 
     }

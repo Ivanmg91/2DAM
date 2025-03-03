@@ -46,9 +46,11 @@
     <Analyzer Include="/home/dam/Unity/Hub/Editor/6000.0.34f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets/Scripts/RocketBehaviour.cs" />
     <Compile Include="Assets/Scripts/PlayerController.cs" />
     <Compile Include="Assets/Scripts/Enemy.cs" />
     <Compile Include="Assets/Scripts/SpawnManager.cs" />
+    <Compile Include="Assets/Scripts/PowerUp.cs" />
     <Compile Include="Assets/Scripts/RotateCamera.cs" />
     <None Include="Assets/Course Library/_Source_Files/_LICENSE.txt" />
     <Reference Include="UnityEngine">

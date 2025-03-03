@@ -398,6 +398,7 @@ MonoBehaviour:
   enemyCount: 0
   waveCount: 1
   player: {fileID: 583048338}
+  enemySpeed: 50
 --- !u!1 &583048338
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +552,7 @@ MonoBehaviour:
   hasPowerup: 0
   powerupIndicator: {fileID: 1427939658}
   powerUpDuration: 5
-  turboSmoke: {fileID: 1936305555}
+  turboSmoke: {fileID: 1936305558}
 --- !u!1 &680832294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,6 +1681,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4392870381175910774, guid: 6562db3a873684fa9b7da3aef8329d82, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4392870381195268594, guid: 6562db3a873684fa9b7da3aef8329d82, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5000001
@@ -1741,14 +1746,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6562db3a873684fa9b7da3aef8329d82, type: 3}
---- !u!1 &1936305555 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4392870381195481524, guid: 6562db3a873684fa9b7da3aef8329d82, type: 3}
-  m_PrefabInstance: {fileID: 1936305554}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1936305556 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4392870381195268594, guid: 6562db3a873684fa9b7da3aef8329d82, type: 3}
+  m_PrefabInstance: {fileID: 1936305554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1936305558 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4392870381175910774, guid: 6562db3a873684fa9b7da3aef8329d82, type: 3}
   m_PrefabInstance: {fileID: 1936305554}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2046577833
